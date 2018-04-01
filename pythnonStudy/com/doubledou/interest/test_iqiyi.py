@@ -31,7 +31,7 @@ def login_cookies():
     encoded_data = urllib.urlencode(data)
     request = urllib2.Request(LOGIN_URL, encoded_data)
     response = opener.open(request)
-    print response.geturl()
+    print(response.geturl())
     return opener
 
 
