@@ -16,7 +16,7 @@ cursor.execute(sql)
 
 rs = cursor.fetchall()
 for row in rs:
-    print "userid=%s, username=%s" % row
+    print('userid=%s, username=%s' % row)
 
 cursor.close()
 conn.close()
