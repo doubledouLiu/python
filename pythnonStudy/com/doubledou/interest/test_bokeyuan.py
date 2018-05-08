@@ -1,4 +1,6 @@
-
+#-*- coding: utf-8 -*-
+__author__ = 'liudoudou'
+# coding=UTF-8
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -46,7 +48,8 @@ def get_distance(image1,image2):
     return i-7
 
 def get_tracks(distance):
-    distance+=20 #先滑过一点，最后再反着滑动回来
+    ###先滑过一点，最后再反着滑动回来##
+    distance+=20
     v=0
     t=0.2
     forward_tracks=[]
@@ -135,4 +138,4 @@ def login_cnblogs(username,password):
         driver.close()
 
 if __name__ == '__main__':
-    login_cnblogs(username='linhaifeng',password='xxxx')
+    login_cnblogs(username='doubledou',password='doudou240703!!')

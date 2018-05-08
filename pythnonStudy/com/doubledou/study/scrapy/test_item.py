@@ -1,6 +1,11 @@
 import scrapy
 
 
+class MyItem(scrapy.Item):
+    url = scrapy.Field()
+    title = scrapy.Field()
+
+
 class Product(scrapy.Item):
     name = scrapy.Field()
     price = scrapy.Field()
