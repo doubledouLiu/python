@@ -1,6 +1,6 @@
 ##-*- coding: utf-8 -*-
 __author__ = 'liudoudou'
-from urllib2 import Request, urlopen, URLError, HTTPError
+from urllib.request import Request, urlopen, URLError, HTTPError
 from bs4 import BeautifulSoup
 
 
