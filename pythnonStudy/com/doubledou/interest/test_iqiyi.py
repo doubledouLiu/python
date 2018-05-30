@@ -113,7 +113,7 @@ def crack(driver): #破解滑动认证
     ActionChains(driver).release().perform()
 
 def login_cnblogs(username,password):
-    driver = webdriver.Chrome("D:\Selenium\Chrome\chromedriver.exe")
+    driver = webdriver.Chrome("/Users/liudoudou/venv/bin/chromedriver")
     try:
         # 1、输入账号密码回车
         driver.implicitly_wait(3)
