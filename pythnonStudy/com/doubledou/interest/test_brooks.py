@@ -1,6 +1,5 @@
 ##-*- coding: utf-8 -*-
 __author__ = 'liudoudou'
-from urllib2 import urlopen, URLError, HTTPError
 import urllib
 from bs4 import BeautifulSoup
 import json
@@ -45,7 +44,7 @@ def getProductDetail(detailUrl):
                 print(sizeParam)
                 stockUrl = availableUrl + productId + "_____" + colorParam + "_" + sizeParam + "_______"
                 availableForSale = getProductStock(stockUrl)
-                print("color : " + colorParam + " size : " + sizeParam + " availableForSale" + availableForSale)
+                print("color : " + colorParam + " size : " + sizeParam + " is availableForSale : " + str(availableForSale))
     except AttributeError as e:
         print(e)
         return None
@@ -53,12 +52,14 @@ def getProductDetail(detailUrl):
 
 def getProductStock(stockUrl):
     try:
-        data = urlopen(stockUrl)
-    except(HTTPError, URLError) as e:
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'}
+        req = urllib.request.Request(url=stockUrl, headers=headers)
+        html = urllib.request.urlopen(req)
+    except(Exception) as e:
         print(e)
         return None
     try:
-        dataHtml = data.read()
+        dataHtml = html.read()
         dataJson = json.loads(dataHtml)
         return dataJson['availableForSale']
     except Exception as e:
@@ -71,7 +72,7 @@ def splitAddress(address, type, productId):
     addressParts = address.split("&")
     for part in addressParts:
         if type in part:
-            return part.replace(type, "").replace(productId, "").replace("_", "").replace("dwvar_", "")
+            return part.replace(type, "").replace(productId, "").replace("_", "").replace("dwvar=", "")
     return ""
 
 
